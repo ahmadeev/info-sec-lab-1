@@ -39,18 +39,6 @@ API поддерживает аутентификацию по JWT, получе
 
 Пароли хранятся только как bcrypt-хэши. Открытый пароль используется только при проверке входа и не записывается в БД.
 
-## CI/CD и security-сканирование
-
-GitHub Actions запускается при `push` и `pull_request`:
-
-- SAST: SpotBugs с плагином Find Security Bugs;
-- SCA: OWASP Dependency-Check;
-- отчёты сохраняются в артефакте `security-reports`.
-
-Публичный репозиторий: https://github.com/ahmadeev/info-sec-lab-1.
-
-Последний успешный запуск pipeline: https://github.com/ahmadeev/info-sec-lab-1/actions/runs/38304764004/job/114995999233.
-
 ### Результат SAST
 
 ![](docs/images/SpotBugs-Report.png)
