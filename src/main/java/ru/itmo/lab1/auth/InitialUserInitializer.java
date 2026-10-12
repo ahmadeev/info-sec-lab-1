@@ -6,6 +6,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import ru.itmo.lab1.common.validation.ValidationLimits;
 import ru.itmo.lab1.user.AppUser;
 import ru.itmo.lab1.user.UserRepository;
 
@@ -32,8 +33,10 @@ public class InitialUserInitializer implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments arguments) {
-        if (login.isBlank()) {
-            throw new IllegalStateException("INITIAL_USER_LOGIN must not be blank");
+        if (login.isBlank() || login.length() > ValidationLimits.LOGIN_MAX_LENGTH) {
+            throw new IllegalStateException(
+                    "INITIAL_USER_LOGIN must not be blank and must not exceed 100 characters"
+            );
         }
         if (!BcryptPasswordPolicy.supports(password)) {
             throw new IllegalStateException(

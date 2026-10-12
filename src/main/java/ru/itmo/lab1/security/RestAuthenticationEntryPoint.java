@@ -20,6 +20,6 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-        response.getWriter().write("{\"error\":\"Unauthorized\"}");
+        response.getWriter().write("{\"status\":401,\"error\":\"Unauthorized\"}");
     }
 }
