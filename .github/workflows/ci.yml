@@ -24,24 +24,16 @@ jobs:
       - name: Run SpotBugs and Find Security Bugs
         run: bash ./mvnw -B compile spotbugs:check
 
-      - name: Upload SpotBugs report
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: spotbugs-report
-          path: target/security-reports/spotbugs/
-          if-no-files-found: error
-
       - name: Run OWASP Dependency-Check
         if: always()
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: bash ./mvnw -B dependency-check:check -DnvdApiKeyEnvironmentVariable=NVD_API_KEY
 
-      - name: Upload Dependency-Check report
+      - name: Upload security reports
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: dependency-check-report
-          path: target/security-reports/dependency-check/
+          name: security-reports
+          path: target/security-reports/
           if-no-files-found: error
