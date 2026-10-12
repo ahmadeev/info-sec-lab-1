@@ -81,8 +81,8 @@
                 <version>4.10.4.1</version>
                 <configuration>
                     <htmlOutput>true</htmlOutput>
-                    <outputDirectory>${project.basedir}/helpers/output/security/spotbugs</outputDirectory>
-                    <spotbugsXmlOutputDirectory>${project.basedir}/helpers/output/security/spotbugs</spotbugsXmlOutputDirectory>
+                    <outputDirectory>${project.build.directory}/security-reports/spotbugs</outputDirectory>
+                    <spotbugsXmlOutputDirectory>${project.build.directory}/security-reports/spotbugs</spotbugsXmlOutputDirectory>
                     <plugins>
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
@@ -98,7 +98,7 @@
                 <version>13.0.0</version>
                 <configuration>
                     <ossIndexAnalyzerEnabled>false</ossIndexAnalyzerEnabled>
-                    <outputDirectory>${project.basedir}/helpers/output/security/dependency-check</outputDirectory>
+                    <outputDirectory>${project.build.directory}/security-reports/dependency-check</outputDirectory>
                 </configuration>
             </plugin>
             <plugin>
