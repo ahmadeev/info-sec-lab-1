@@ -1,0 +1,12 @@
+CREATE TABLE app_users (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    login TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL
+);
+
+CREATE TABLE notes (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    owner_id BIGINT NOT NULL REFERENCES app_users (id),
+    title TEXT NOT NULL,
+    content TEXT NOT NULL
+);
